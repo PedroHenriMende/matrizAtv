@@ -3,21 +3,26 @@
 números de 0 a 9. Em seguida, exiba a matriz na tela. */
 
 console.clear();
+let teclado = require(`prompt-sync`)();
+let minhaMatriz: number[][] = [];
 
-let minhaMatriz: number [][] = []; 
+let linha = 3;
+let coluna = 3;
 
-let linha: number = 2; 
-let coluna: number = 2; 
- 
-for (let z = 0; z <= linha; z++) {  
-    minhaMatriz[z] = [];  
-    for (let x=0; x <= coluna ; x++) {  
-        minhaMatriz[z][x] = Math.floor(Math.random() * 21);  
-    }  
-}  
+for (let i = 0; i < linha; i++) {
+    minhaMatriz[i] = [];
 
+    for (let y = 0; y < coluna; y++) {
+        let numero: number = parseInt(teclado(`Digite o numero entre 0 a 9 que vai estar no endereço [${i+1}, ${y+1}] da matriz: `));
+        if(numero < 10 && numero >= 0){
+        minhaMatriz[i][y] = numero;
+        }
+        else{
+            y--
+        }
+    }
+}
 console.log(minhaMatriz);
-
 let maior: number = minhaMatriz[0][0];
 let posicao: number[] = [0, 0];
 
