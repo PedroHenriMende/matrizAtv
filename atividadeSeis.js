@@ -2,34 +2,21 @@
 6-Crie uma matriz 3x3 com entrada manual de números aceitando somente
 números de 0 a 9. Em seguida, exiba a matriz na tela. */
 console.clear();
+var teclado = require("prompt-sync")();
 var minhaMatriz = [];
-var linha = 2;
-var coluna = 2;
-for (var z = 0; z <= linha; z++) {
-    minhaMatriz[z] = [];
-    for (var x = 0; x <= coluna; x++) {
-        minhaMatriz[z][x] = Math.floor(Math.random() * 21);
-    }
-}
-console.log(minhaMatriz);
-var maior = minhaMatriz[0][0];
-var posicao = [0, 0];
-for (var z = 0; z < linha; z++) {
-    for (var x = 0; x < coluna; x++) {
-        if (minhaMatriz[z][x] > maior) {
-            maior = minhaMatriz[z][x];
-            posicao = [z, x];
+var linha = 3;
+var coluna = 3;
+for (var i = 0; i < linha; i++) {
+    minhaMatriz[i] = [];
+    for (var y = 0; y < coluna; y++) {
+        var numero = parseInt(teclado("Digite o numero entre 0 a 9 que vai estar no endere\u00E7o [".concat(i + 1, ", ").concat(y + 1, "] da matriz: ")));
+        if (numero < 10 && numero >= 0) {
+            minhaMatriz[i][y] = numero;
+        }
+        else {
+            y--;
         }
     }
 }
-for (var z = 0; z < linha; z++) {
-    for (var x = 0; x < coluna; x++) {
-        if (minhaMatriz[z][x] > maior) {
-            minhaMatriz[z][x] = maior;
-            posicao[1] = z;
-            posicao[0] = x;
-        }
-    }
-}
-console.log("O maior elemento da matriz \u00E9: ".concat(maior, " e se encontra na posi\u00E7\u00E3o [").concat(posicao[0], ", ").concat(posicao[1], "]"));
 console.log(minhaMatriz);
+
